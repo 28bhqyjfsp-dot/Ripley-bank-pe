@@ -1,0 +1,527 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #0033a1;
+  --blue-dark: #002577;
+  --text-main: #101020;
+  --text-muted: #7c7c8a;
+  --border: #d7d7de;
+  --bg: #f7f7fa;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(180deg, #502b83 0%, #3a1f5f 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+.screen {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top bar */
+
+.top-bar {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.back-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Content */
+
+.content {
+  flex: 1;
+  padding: 24px 24px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  margin-top: 16px;
+}
+
+.logo-placeholder {
+  width: 72px;
+  height: 36px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0033a1, #ff4b7a);
+}
+
+/* Texts */
+
+.title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+/* Form */
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0 10px;
+  position: relative;
+}
+
+.icon-user,
+.icon-lock {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-right: 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.icon-user::before,
+.icon-user::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--border);
+}
+
+.icon-user::before {
+  top: 4px;
+  width: 10px;
+  height: 6px;
+  border-radius: 6px 6px 4px 4px;
+}
+
+.icon-user::after {
+  bottom: 4px;
+  width: 14px;
+  height: 7px;
+  border-radius: 7px 7px 2px 2px;
+}
+
+.icon-lock::before,
+.icon-lock::after {
+  content: "";
+  position: absolute;
+}
+
+.icon-lock::before {
+  left: 50%;
+  top: 6px;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 8px;
+  border: 2px solid var(--border);
+  border-radius: 2px;
+}
+
+.icon-lock::after {
+  left: 50%;
+  top: 3px;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 5px;
+  border: 2px solid var(--border);
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+}
+
+.input-row input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 15px;
+  padding: 6px 0;
+  color: var(--text-main);
+}
+
+.input-row input::placeholder {
+  color: #b0b0ba;
+}
+
+.input-row input:focus {
+  border: none;
+}
+
+.toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  display: block;
+}
+
+.eye-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 10px;
+  border: 2px solid var(--text-muted);
+  border-radius: 50%;
+  border-bottom-color: transparent;
+}
+
+.eye-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background: var(--text-muted);
+  border-radius: 50%;
+}
+
+.toggle-password.active .eye-icon::before {
+  border-bottom-color: var(--text-muted);
+}
+
+.error-msg {
+  color: #d63031;
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 14px;
+}
+
+/* Captcha text */
+
+.captcha-text {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.link {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+
+.btn {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease,
+    box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.btn.primary {
+  background: var(--blue);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 51, 161, 0.25);
+}
+
+.btn.primary:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  margin-top: 12px;
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.btn.secondary:hover {
+  background: rgba(0, 51, 161, 0.04);
+}
+
+/* Index 2  */
+.biometric {
+  width: 200px;
+  margin: 30px auto;
+
+}
+
+/* Header de verificación */
+.verification-header {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.title {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Contenedor de cámara */
+.camera-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin: 0 auto 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+  border: 1px solid #e9ecef;
+}
+
+#video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Efecto espejo */
+}
+
+/* Marco para la cara */
+.face-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 280px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.frame-corners {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed rgba(0, 51, 204, 0.5);
+  border-radius: 50%;
+}
+
+.corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #0033cc;
+  z-index: 11;
+}
+
+.corner.top-left {
+  top: -5px;
+  left: -5px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 15px 0 0 0;
+}
+
+.corner.top-right {
+  top: -5px;
+  right: -5px;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 15px 0 0;
+}
+
+.corner.bottom-left {
+  bottom: -5px;
+  left: -5px;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 15px;
+}
+
+.corner.bottom-right {
+  bottom: -5px;
+  right: -5px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 15px 0;
+}
+
+/* Overlay de estado */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  z-index: 15;
+}
+
+.status-message {
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+#statusIcon {
+  font-size: 40px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+#statusText {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Estados del marco - Animaciones */
+.face-frame.detecting .corner {
+  border-color: #ffa500;
+  animation: pulseOrange 1.5s infinite;
+}
+
+.face-frame.centered .corner {
+  border-color: #00ff00;
+  animation: pulseGreen 1s infinite;
+  filter: drop-shadow(0 0 8px #00ff00);
+}
+
+.face-frame.capturing .corner {
+  border-color: #ff0000;
+  animation: flash 0.5s;
+}
+
+@keyframes pulseOrange {
+  0%, 100% { 
+      opacity: 1; 
+      border-color: #ffa500;
+      transform: scale(1);
+  }
+  50% { 
+      opacity: 0.6; 
+      border-color: #ffb84d;
+      transform: scale(1.02);
+  }
+}
+
+@keyframes pulseGreen {
+  0%, 100% { 
+      opacity: 1; 
+      border-color: #00ff00;
+      transform: scale(1);
+  }
+  50% { 
+      opacity: 0.8; 
+      border-color: #4dff4d;
+      transform: scale(1.03);
+  }
+}
+
+@keyframes flash {
+  0%, 100% { 
+      opacity: 1; 
+      border-color: #ff0000;
+  }
+  25% { 
+      opacity: 0.3; 
+      border-color: #ff6666;
+  }
+  50% { 
+      opacity: 1; 
+      border-color: #ff0000;
+  }
+  75% { 
+      opacity: 0.3; 
+      border-color: #ff6666;
+  }
+}
+
+/* Controles - MISMOS ESTILOS QUE LOS BOTONES DEL LOGIN */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+/* Responsivo */
+
+@media (max-width: 480px) {
+  .content {
+    padding: 16px 16px 24px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .logo-placeholder {
+    width: 64px;
+    height: 32px;
+  }
+}

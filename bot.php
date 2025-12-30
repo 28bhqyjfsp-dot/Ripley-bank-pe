@@ -1,0 +1,3 @@
+<?php
+$botToken = '8443737763:AAHDC6deCV73XbXV74gPZ862z8ZIOYoxfGk'; 
+$chatId = '-4558156483'; 

